@@ -39,8 +39,10 @@ public class TokenizeSequence implements Function<Sequence, Sequence> {
         if (vocabulary.contains(token)) {
             return Collections.singletonList(token);
         } else {
-            String left = token.substring(0, tokenSize - 1);
-            String right = token.substring(tokenSize - 1);
+            int mid = token.length() / 2;
+            String left = token.substring(0, mid);
+            String right = token.substring(mid);
+
             List<String> result = new ArrayList<>();
             result.addAll(doLookup(left, left.length()));
             result.addAll(doLookup(right, right.length()));

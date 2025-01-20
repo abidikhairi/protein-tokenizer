@@ -13,26 +13,26 @@ class TokenizeSequenceTest {
 
     @Test
     public void testChunkSequence() {
-        TokenizeSequence tokenizer = new TokenizeSequence(4, null);
+        TokenizeSequence tokenizer = new TokenizeSequence(6, null);
         String inputSequence = "abcdefghijklmn";
 
         List<String> tokens = tokenizer.tokenize(inputSequence);
 
-        assertEquals(4, tokens.size());
-        assertEquals("abcd", tokens.get(0));
+        assertEquals(3, tokens.size());
+        assertEquals("abcdef", tokens.get(0));
         assertEquals("mn", tokens.get(tokens.size() - 1));
     }
 
     @Test
     public void testTokenize() throws IOException {
-        Vocabulary vocabulary = new Vocabulary("/run/media/khairi/HIKSEMI/datasets/prot_lang/vocab.json");
+        Vocabulary vocabulary = new Vocabulary("data/vocab-38k.json");
 
-        TokenizeSequence tokenizer = new TokenizeSequence(4, vocabulary);
-        String inputSequence = "ABCDEFGHIKLMN";
+        TokenizeSequence tokenizer = new TokenizeSequence(6, vocabulary);
+        String inputSequence = "GGRGGGEEKKKA";
         Sequence outputSequence = tokenizer.apply(new Sequence(null, inputSequence));
 
         assertNotNull(outputSequence);
-        assertEquals("A B C D EFG H IKL M N", outputSequence.getSequence());
+        assertEquals("GGRGGG EEK KKA", outputSequence.getSequence());
     }
 
 }
