@@ -22,8 +22,8 @@ java -jar target/tokenizer-1.0-SNAPSHOT-jar-with-dependencies.jar \
 java -jar target/tokenizer-1.0-SNAPSHOT-jar-with-dependencies.jar \
   --inputFile path/to/sequences.tsv \
   --vocabPath path/to/vocab.json \
-  --fileFormat fasta \
-  --maxTokenLength 6
+  --fileFormat tsv \
+  --maxTokenLength 6 \
   --outputFile path/to/tokenized-sequences.txt
 ```
 When tokenizing a tsv file, the tokenizer expects the input file to have two columns `Entry` and `Sequence` (in this order).
